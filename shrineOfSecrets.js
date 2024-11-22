@@ -24,8 +24,9 @@ let config = {
     }
 };
 
-(async () => {
+export default async (req, res) => {
     try {
+        
         const response = await axios.request(config);
         const $ = cheerio.load(response.data);
 
@@ -44,12 +45,8 @@ let config = {
         //Extract expiration date if available
         const expirationDate = $('#mw-content-text > div > table.sosTable.disableTooltip > tbody > tr:nth-child(4) > th').text().trim(); // Adjust as necessary
 
-        console.log('Weekly Perks:');
-        perks.forEach(perk => {
-            console.log(`- { \x1b[34mPerk:\x1b[0m "\x1b[32m${perk.perkName}\x1b[0m", \x1b[34mCharacter:\x1b[0m "\x1b[32m${perk.characterName}\x1b[0m" }`);
-        });
-        console.log('Expiration Date:', expirationDate);
+        res.status(200).json({ perks, expirationDate });
     } catch (error) {
-        console.error('Error occurred:', error);
+        res.status(500).json({ error: error.message });
     }
-})();
+};
