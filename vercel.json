@@ -1,9 +1,23 @@
 {
-    "redirects": [
+    "version": 2,
+    "builds": [
       {
-        "source": "/",
-        "destination": "/api/shrineOfSecrets.js",
-        "permanent": true
+        "src": "api/shrineOfSecrets.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "bot.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/",
+        "dest": "/api/shrineOfSecrets.js"
+      },
+      {
+        "src": "/bot",
+        "dest": "/bot.js"
       }
     ]
   }

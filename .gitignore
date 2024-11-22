@@ -1,11 +1,6 @@
 node_modules
-Cluster.py
-main.js
-config.js
 deliveryPhase.js
 freeGames.js
 screenPhase.js
-Screenshot 2024-10-17 102836.png
-Screenshot 2024-10-17 102905.png
-Oracle_JDK-23
 test-results
+.env
